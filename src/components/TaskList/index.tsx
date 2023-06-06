@@ -1,7 +1,12 @@
-import { Task } from '../Task'
 import styles from './TaskList.module.css'
+import { Task as TaskInterface } from '../../App';
+import { Task } from '../Task';
 
-export function TaskList() {
+interface TaskListProps {
+  tasks: TaskInterface[];
+}
+
+export function TaskList({ tasks }: TaskListProps) {
   return (
     <section>
       <div className={styles.container}>
@@ -15,8 +20,13 @@ export function TaskList() {
         </div>
       </div>
 
-      {/* Tasks */}
-      <Task />
+      <div className={styles.tasks}>
+        {tasks.map(task => {
+          return (
+            <Task key={task.id} description={task.description} isCompleted={task.isCompleted} id={task.id} />
+          )
+        })}
+      </div>
     </section>
   )
 }
