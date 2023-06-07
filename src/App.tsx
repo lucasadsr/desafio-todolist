@@ -12,13 +12,7 @@ export interface Task {
 }
 
 function App() {
-  const [tasks, setTasks] = useState<Task[]>([
-    {
-      id: "3",
-      description: "test",
-      isCompleted: true
-    }
-  ])
+  const [tasks, setTasks] = useState<Task[]>([])
 
   function handleNewTask(task: Task) {
     setTasks(prevTasks => [...prevTasks, task])
