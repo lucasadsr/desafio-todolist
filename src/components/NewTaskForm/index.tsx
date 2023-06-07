@@ -13,19 +13,26 @@ export function NewTaskForm({ handleNewTask }: NewTaskFormProps) {
 
   function handleNewTaskText(e: ChangeEvent<HTMLInputElement>) {
     setNewTaskText(e.target.value)
+    console.log(newTaskText);
   }
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
-    const newTask: Task = {
-      id: uuidv4(),
-      description: newTaskText,
-      isCompleted: false,
+
+
+    if (newTaskText.trim() !== '') {
+      const newTask: Task = {
+        id: uuidv4(),
+        description: newTaskText,
+        isCompleted: false,
+      }
+
+      setNewTaskText('')
+
+      handleNewTask(newTask)
+    } else {
+      alert('Insira um texto válido!')
     }
-
-    setNewTaskText('')
-
-    handleNewTask(newTask)
   }
 
   return (
@@ -37,7 +44,7 @@ export function NewTaskForm({ handleNewTask }: NewTaskFormProps) {
         value={newTaskText}
         onChange={handleNewTaskText}
       />
-      <button type='submit'>
+      <button type='submit' disabled={newTaskText.trim() ? false : true}>
         Criar
         <PlusCircle size={22} />
       </button>

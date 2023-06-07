@@ -43,9 +43,14 @@
   font-weight: 700;
 
   transition: all 0.2s;
+  cursor: pointer;
+}
+
+.form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .form button:hover {
-  cursor: pointer;
   background: var(--blue);
 }
