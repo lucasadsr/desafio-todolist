@@ -20,7 +20,7 @@ export function TaskList({ tasks, handleToggleStatus, handleDeleteTask }: TaskLi
         </div>
         <div className={styles.item}>
           <p className={styles.completedTasks}>Concluídas</p>
-          <span className={styles.number}>{completedTasks}/{tasks.length}</span>
+          <span className={styles.number}>{completedTasks} de {tasks.length}</span>
         </div>
       </div>
 
