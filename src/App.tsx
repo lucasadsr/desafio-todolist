@@ -30,12 +30,22 @@ function App() {
     )))
   }
 
+  function handleDeleteTask(taskId: string) {
+    setTasks(tasks.filter(task => (
+      taskId !== task.id
+    )))
+  }
+
   return (
     <div>
       <Header />
       <div className={styles.wrapper}>
         <NewTaskForm handleNewTask={handleNewTask} />
-        <TaskList tasks={tasks} handleToggleStatus={handleToggleStatus} />
+        <TaskList
+          tasks={tasks}
+          handleToggleStatus={handleToggleStatus}
+          handleDeleteTask={handleDeleteTask}
+        />
       </div>
     </div>
   )

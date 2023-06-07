@@ -5,9 +5,10 @@ import { Task } from '../Task';
 interface TaskListProps {
   tasks: TaskInterface[];
   handleToggleStatus: (taskId: string) => void;
+  handleDeleteTask: (taskId: string) => void;
 }
 
-export function TaskList({ tasks, handleToggleStatus }: TaskListProps) {
+export function TaskList({ tasks, handleToggleStatus, handleDeleteTask }: TaskListProps) {
   return (
     <section>
       <div className={styles.container}>
@@ -24,7 +25,14 @@ export function TaskList({ tasks, handleToggleStatus }: TaskListProps) {
       <div className={styles.tasks}>
         {tasks.map(task => {
           return (
-            <Task key={task.id} description={task.description} isCompleted={task.isCompleted} id={task.id} handleToggleStatus={handleToggleStatus} />
+            <Task
+              key={task.id}
+              description={task.description}
+              isCompleted={task.isCompleted}
+              id={task.id}
+              handleToggleStatus={handleToggleStatus}
+              handleDeleteTask={handleDeleteTask}
+            />
           )
         })}
       </div>

@@ -4,9 +4,10 @@ import { Trash } from 'phosphor-react'
 
 interface TaskProps extends TaskInterface {
   handleToggleStatus: (taskId: string) => void;
+  handleDeleteTask: (taskId: string) => void;
 }
 
-export function Task({ isCompleted, description, id, handleToggleStatus }: TaskProps) {
+export function Task({ isCompleted, description, id, handleToggleStatus, handleDeleteTask }: TaskProps) {
   return (
     <div className={styles.task}>
       <div className={styles.wrapper}>
@@ -16,7 +17,10 @@ export function Task({ isCompleted, description, id, handleToggleStatus }: TaskP
         />
         <p className={`${isCompleted ? styles.completed : ''}`}>{description}</p>
       </div>
-      <button className={styles.trashButton}>
+      <button
+        className={styles.trashButton}
+        onClick={() => handleDeleteTask(id)}
+      >
         <Trash size={24} />
       </button>
     </div>
