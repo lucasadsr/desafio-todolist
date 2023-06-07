@@ -12,10 +12,22 @@ export interface Task {
 }
 
 function App() {
-  const [tasks, setTasks] = useState<Task[]>([])
+  const [tasks, setTasks] = useState<Task[]>([
+    {
+      id: "3",
+      description: "test",
+      isCompleted: true
+    }
+  ])
 
   function handleNewTask(task: Task) {
     setTasks(prevTasks => [...prevTasks, task])
+  }
+
+  function handleToggleStatus(taskId: string) {
+    setTasks(tasks.map(task => (
+      taskId === task.id ? { ...task, isCompleted: !task.isCompleted } : task
+    )))
   }
 
   return (
@@ -23,7 +35,7 @@ function App() {
       <Header />
       <div className={styles.wrapper}>
         <NewTaskForm handleNewTask={handleNewTask} />
-        <TaskList tasks={tasks} />
+        <TaskList tasks={tasks} handleToggleStatus={handleToggleStatus} />
       </div>
     </div>
   )

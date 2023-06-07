@@ -25,9 +25,22 @@
   height: 1.25rem;
 }
 
+.customRadio:hover {
+  border: 2px solid var(--blue-dark);
+  background: rgba(30, 111, 159, 0.2)
+}
+
 button.completed {
-  background-image: url('../../assets/check.svg');
-  background: var(--purple);
+  background: url('../../assets/check.svg') no-repeat scroll var(--purple-dark);
+  background-position: center;
+  background-size: contain;
+  border: 2px solid var(--purple-dark);
+}
+
+button.completed:hover {
+  background: url('../../assets/check.svg') no-repeat scroll var(--purple);
+  background-position: center;
+  background-size: contain;
   border: 2px solid var(--purple);
 }
 
